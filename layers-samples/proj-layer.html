@@ -142,6 +142,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       xrFramebuffer = gl.createFramebuffer();
       xrGLFactory = new XRWebGLBinding(session, gl);
 
+      session.addEventListener('visibilitychange', e => {
+        console.log('visibility ' + e.session.visibilityState);
+      });
+
       session.requestReferenceSpace('local').then((refSpace) => {
         xrRefSpace = refSpace;
         proj_layer = xrGLFactory.createProjectionLayer({ space: refSpace, stencil: false });
